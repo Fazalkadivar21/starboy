@@ -10,7 +10,7 @@
     "start": "node index.js"
   },
   "keywords": [
-    "vite",
+    "starboy",
     "node",
     "bundler",
     "cli",
