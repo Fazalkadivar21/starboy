@@ -60,7 +60,7 @@ function copyTemplate(srcDir, destDir) {
       type: "text",
       name: "projectName",
       message: "Enter project name:",
-      initial: "skrrt-app",
+      initial: "starboy-app",
     });
     baseName = response.projectName.toLowerCase(); // lowercase bhi kar dia
     isCurrentDir = false;
