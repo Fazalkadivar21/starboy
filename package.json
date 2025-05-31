@@ -1,6 +1,6 @@
 {
   "name": "create-starboy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Lightning fast kickstarter for Node.js",
   "bin": {
     "starboy": "./index.js"
