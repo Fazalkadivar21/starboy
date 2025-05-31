@@ -11,16 +11,18 @@ importers:
       chalk:
         specifier: ^5.3.0
         version: 5.4.1
-      cli-progress:
-        specifier: ^3.12.0
-        version: 3.12.0
-      prompts:
-        specifier: ^2.4.2
-        version: 2.4.2
-    devDependencies:
       chokidar:
         specifier: ^4.0.3
         version: 4.0.3
+      cli-progress:
+        specifier: ^3.12.0
+        version: 3.12.0
+      create-starboy:
+        specifier: ^1.0.3
+        version: 1.0.3
+      prompts:
+        specifier: ^2.4.2
+        version: 2.4.2
 
 packages:
 
@@ -39,6 +41,10 @@ packages:
   cli-progress@3.12.0:
     resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==}
     engines: {node: '>=4'}
+
+  create-starboy@1.0.3:
+    resolution: {integrity: sha512-4RrpV8Nql/C8WRAz/fJaZcj4mVeg4DNsVsSGHqbQx2LZrWgm7HP0MfgJTuZJAEo2Jtcidm5knsUWofR0YXv8BA==}
+    hasBin: true
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -83,6 +89,13 @@ snapshots:
   cli-progress@3.12.0:
     dependencies:
       string-width: 4.2.3
+
+  create-starboy@1.0.3:
+    dependencies:
+      chalk: 5.4.1
+      chokidar: 4.0.3
+      cli-progress: 3.12.0
+      prompts: 2.4.2
 
   emoji-regex@8.0.0: {}
 
