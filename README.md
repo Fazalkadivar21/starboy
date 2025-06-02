@@ -85,10 +85,3 @@ This starts the `dev.js` script, which:
 * If the target folder already exists, it will exit with an error.
 * Automatically adds progress bar while creating files.
 * Works smoothly with both `npm` and `pnpm`.
-
----
-
-## 🔗 GitHub
-
-Check out the source code here:
-https://github.com/fazalkadivar21/starboy

@@ -7,28 +7,18 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
       chalk:
-        specifier: ^5.3.0
+        specifier: ^5.4.1
         version: 5.4.1
       chokidar:
         specifier: ^4.0.3
         version: 4.0.3
-      cli-progress:
-        specifier: ^3.12.0
-        version: 3.12.0
-      create-starboy:
-        specifier: ^1.0.3
-        version: 1.0.3
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
 
 packages:
-
-  ansi-regex@5.0.1:
-    resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
-    engines: {node: '>=8'}
 
   chalk@5.4.1:
     resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
@@ -37,21 +27,6 @@ packages:
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
-
-  cli-progress@3.12.0:
-    resolution: {integrity: sha512-tRkV3HJ1ASwm19THiiLIXLO7Im7wlTuKnvkYaTkyoAPefqjNg7W7DHKUlGRxy9vxDvbyCYQkQozvptuMkGCg8A==}
-    engines: {node: '>=4'}
-
-  create-starboy@1.0.3:
-    resolution: {integrity: sha512-4RrpV8Nql/C8WRAz/fJaZcj4mVeg4DNsVsSGHqbQx2LZrWgm7HP0MfgJTuZJAEo2Jtcidm5knsUWofR0YXv8BA==}
-    hasBin: true
-
-  emoji-regex@8.0.0:
-    resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
-
-  is-fullwidth-code-point@3.0.0:
-    resolution: {integrity: sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg==}
-    engines: {node: '>=8'}
 
   kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
@@ -68,38 +43,13 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  string-width@4.2.3:
-    resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
-    engines: {node: '>=8'}
-
-  strip-ansi@6.0.1:
-    resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
-    engines: {node: '>=8'}
-
 snapshots:
-
-  ansi-regex@5.0.1: {}
 
   chalk@5.4.1: {}
 
   chokidar@4.0.3:
     dependencies:
       readdirp: 4.1.2
-
-  cli-progress@3.12.0:
-    dependencies:
-      string-width: 4.2.3
-
-  create-starboy@1.0.3:
-    dependencies:
-      chalk: 5.4.1
-      chokidar: 4.0.3
-      cli-progress: 3.12.0
-      prompts: 2.4.2
-
-  emoji-regex@8.0.0: {}
-
-  is-fullwidth-code-point@3.0.0: {}
 
   kleur@3.0.3: {}
 
@@ -111,13 +61,3 @@ snapshots:
   readdirp@4.1.2: {}
 
   sisteransi@1.0.5: {}
-
-  string-width@4.2.3:
-    dependencies:
-      emoji-regex: 8.0.0
-      is-fullwidth-code-point: 3.0.0
-      strip-ansi: 6.0.1
-
-  strip-ansi@6.0.1:
-    dependencies:
-      ansi-regex: 5.0.1

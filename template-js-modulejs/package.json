@@ -23,6 +23,7 @@
     "mongoose": "^8.15.1"
   },
   "devDependencies": {
-    "create-starboy": "^1.0.7"
+    "create-starboy": "^1.0.7",
+    "prettier": "^3.5.3"
   }
 }
