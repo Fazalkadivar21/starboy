@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import { spawn } from "child_process";
 import chokidar from "chokidar";
 import chalk from "chalk";
@@ -16,7 +14,7 @@ const startServer = () => {
     env: { ...process.env },
   });
 
-  console.log(chalk.green("🚀 Server started!"));
+  console.log(chalk.green("\n🚀 Server started!"));
 };
 
 const watchAndRestart = () => {
@@ -26,12 +24,10 @@ const watchAndRestart = () => {
     ignoreInitial: true,
   });
 
-  watcher.on("all", (event, path) => {
-    console.log(chalk.yellow(`\n🔁 File changed: ${path}`));
+  watcher.on("all", () => {
     startServer();
   });
 
-  console.log(chalk.cyan("👀 Watching for file changes..."));
   startServer();
 };
 

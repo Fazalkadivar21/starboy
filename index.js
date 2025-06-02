@@ -5,7 +5,6 @@ import path from "path";
 import { fileURLToPath } from "url";
 import prompts from "prompts";
 import chalk from "chalk";
-import cliProgress from "cli-progress";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,20 +14,6 @@ function copyTemplate(srcDir, destDir) {
 
   const items = fs.readdirSync(srcDir);
 
-  // Setup Progress Bar
-  const bar = new cliProgress.SingleBar(
-    {
-      format: "🚧 creating [{bar}] {percentage}% | {value}/{total} files",
-      barCompleteChar: "█",
-      barIncompleteChar: "░",
-      hideCursor: true,
-    },
-    cliProgress.Presets.shades_classic
-  );
-
-  bar.start(items.length, 0);
-
-  let count = 0;
   for (const item of items) {
     const srcPath = path.join(srcDir, item);
     const destPath = path.join(destDir, item);
@@ -40,32 +25,57 @@ function copyTemplate(srcDir, destDir) {
       const content = fs.readFileSync(srcPath, "utf-8");
       fs.writeFileSync(destPath, content);
     }
-
-    count++;
-    bar.update(count);
   }
-
-  bar.stop();
 }
+
+const configResponse = async () => {
+  const responce = await prompts([
+    {
+      type: "select",
+      name: "language",
+      message: "Choose language:",
+      choices: [
+        { title: "JavaScript", value: "js" },
+        { title: "TypeScript", value: "ts" },
+      ],
+      initial: 0,
+    },
+    {
+      type: "select",
+      name: "type",
+      message: "Select type:",
+      choices: [
+        { title: "ES Modules", value: "modulejs" },
+        { title: "CommonJS", value: "cjs" },
+      ],
+      initial: 0,
+    },
+  ]);
+
+  return {
+    language: responce.language.toLowerCase(),
+    type: responce.type.toLowerCase(),
+  };
+};
 
 (async () => {
   let rawArg = process.argv[2];
 
   let baseName;
   let isCurrentDir;
+  let templateDir;
 
   if (!rawArg) {
-    // 2. agar arg empty hai, toh prompt karo
     const response = await prompts({
       type: "text",
       name: "projectName",
       message: "Enter project name:",
       initial: "starboy-app",
     });
-    baseName = response.projectName.toLowerCase(); // lowercase bhi kar dia
+
+    baseName = response.projectName.toLowerCase();
     isCurrentDir = false;
   } else if (rawArg === ".") {
-    // 1. agar '.' hai toh current directory
     isCurrentDir = true;
     baseName = path.basename(process.cwd());
   } else if (rawArg === "dev") {
@@ -75,7 +85,6 @@ function copyTemplate(srcDir, destDir) {
     });
     return;
   } else {
-    // 3. arg diya hai, use lowercase karo
     isCurrentDir = false;
     baseName = rawArg.toLowerCase();
   }
@@ -99,7 +108,10 @@ function copyTemplate(srcDir, destDir) {
     )
   );
 
-  const templatePath = path.join(__dirname, "templates");
+  const res = await configResponse();
+  templateDir = `template-${res.language}-${res.type}`;
+  const templatePath = path.join(__dirname, templateDir);
+
   copyTemplate(templatePath, targetDir);
 
   ["README.md", "package.json"].forEach((fileName) => {
@@ -113,13 +125,9 @@ function copyTemplate(srcDir, destDir) {
 
   console.log(chalk.green("\n✅ Project files created successfully!"));
 
-  if (isCurrentDir) {
-    console.log(
-      chalk.yellow(`\n👉 You are already inside your project folder`)
-    );
-  } else {
+  if (!isCurrentDir) {
     console.log(chalk.yellow(`\ncd ${baseName}`));
   }
-  console.log(chalk.yellow(`pnpm install`));
-  console.log(chalk.yellow(`pnpm dev\n`));
+  console.log(chalk.green(`pnpm install`));
+  console.log(chalk.green(`pnpm dev\n`));
 })();
