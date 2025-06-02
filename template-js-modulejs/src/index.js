@@ -7,9 +7,8 @@ app.get("/",(req,res)=>{
 const port = process.env.PORT || 3000
 
 app.listen(port,()=>{
-    console.log(`\nServer running at http://localhost:${port}\n`)   
+    console.log(`\n\nServer running at http://localhost:${port}\n`)   
 })
-
 /*
 please create a .env file and put or replace this values in it
 
