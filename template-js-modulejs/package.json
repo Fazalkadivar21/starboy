@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "create-starboy": "^1.0.7",
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3 "
   }
 }
